@@ -1,18 +1,23 @@
 public class LinearEquation {
-    private int s_Int;
-    private int x;
-    private int y;
+    private String coordinate;
+    private int horizontal;
+    private int vertical;
 
-    public StringToInt(s_Int){
-        this.s_Int = s_Int;
+    public void Receiver1(int horizontal, int vertical){
+        int horizontal1 = horizontal;
+        int vertical1 = vertical;
     }
 
-    public LinearEquation(x, y){
-        this.x = x;
-        this.y = y;
+    public void Receiver2(int horizontal, int vertical){
+        int horizontal2 = horizontal;
+        int vertical2 = vertical;
     }
 
-    // Create all strings
+    public LinearEquation(){
+        (horizontal - horizontal)
+    }
+
+    // Create all strings to be printed
     public String toString(){
 
     }
