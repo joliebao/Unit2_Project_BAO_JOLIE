@@ -1,16 +1,18 @@
 public class LinearEquation {
     private String coordinate;
-    private int horizontal;
-    private int vertical;
+    private int horizontal1;
+    private int vertical1;
+    private int horizontal2;
+    private int vertical2;
 
     public void Receiver1(int horizontal, int vertical){
-        int horizontal1 = horizontal;
-        int vertical1 = vertical;
+        horizontal1 = horizontal;
+        vertical1 = vertical;
     }
 
     public void Receiver2(int horizontal, int vertical){
-        int horizontal2 = horizontal;
-        int vertical2 = vertical;
+        horizontal2 = horizontal;
+        vertical2 = vertical;
     }
 
     public int ChangeOfX(){
@@ -23,15 +25,23 @@ public class LinearEquation {
         return deltaY;
     }
 
-
-    public int slope(){
-        deltaY / deltaX;
+    public String Slope(){
+       String m = ChangeOfY() + "/" + ChangeOfX();
+       return m;
+       // set up different slope conditions following the third page instructions!
     }
 
+    public int YIntercept(){
+        int b = vertical2 - (horizontal2 * (ChangeOfY()/ChangeOfX()));
+        return b;
+    }
+
+    //pythagorean theorem
     public double distance(){
 
     }
 
+    // y = mx + b form
     public String slopeEquation(){
 
     }
