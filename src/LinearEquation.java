@@ -13,17 +13,19 @@ public class LinearEquation {
         int vertical2 = vertical;
     }
 
-    public LinearEquation(){
-        (horizontal - horizontal)
+    public int ChangeOfX(){
+        int deltaX = horizontal2 - horizontal1;
+        return deltaX;
     }
 
-    // Create all strings to be printed
-    public String toString(){
-
+    public inr ChangeOfY(){
+        int deltaY = vertical2 - vertical1;
+        return deltaY;
     }
+
 
     public int slope(){
-
+        deltaY / deltaX;
     }
 
     public double distance(){
@@ -34,6 +36,14 @@ public class LinearEquation {
 
     }
 
+    public LinearEquation(){
+
+    }
+
+    // Create all strings to be printed
+    public String toString(){
+
+    }
 
     public int findY(){
 
