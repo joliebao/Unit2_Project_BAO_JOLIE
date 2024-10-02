@@ -18,7 +18,7 @@ public class LinearEquation {
         return deltaX;
     }
 
-    public inr ChangeOfY(){
+    public int ChangeOfY(){
         int deltaY = vertical2 - vertical1;
         return deltaY;
     }
