@@ -21,8 +21,21 @@ public class EquationRunner {
         int horizontal2 = Integer.parseInt(x2);
         int vertical2 = Integer.parseInt(y2);
 
+        LinearEquation points = new LinearEquation();
 
+        points.ReceiverOne(horizontal1, vertical1);
+        points.ReceiverTwo(horizontal2, vertical2);
+        points.ChangeOfX();
+        points.ChangeOfY();
+        points.Slope();
+        points.YIntercept();
+        points.Distance();
+        points.SlopeEquation();
+        System.out.println(points.LinearEquation());
 
 //        System.out.print("Enter your second Coordinate Point: ");
+        points.FindY();
+        points.toString();
+
     }
 }

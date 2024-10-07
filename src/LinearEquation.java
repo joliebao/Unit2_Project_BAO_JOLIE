@@ -1,18 +1,22 @@
 public class LinearEquation {
-    private String coordinate;
     private int horizontal1;
     private int vertical1;
     private int horizontal2;
     private int vertical2;
+    private int horizontal;
 
-    public void Receiver1(int horizontal, int vertical){
+    public void ReceiverOne(int horizontal, int vertical){
         horizontal1 = horizontal;
         vertical1 = vertical;
     }
 
-    public void Receiver2(int horizontal, int vertical){
+    public void ReceiverTwo(int horizontal, int vertical){
         horizontal2 = horizontal;
         vertical2 = vertical;
+    }
+
+    public void Receiver(int horizontal){
+        this.horizontal = horizontal;
     }
 
     public int ChangeOfX(){
@@ -37,25 +41,36 @@ public class LinearEquation {
     }
 
     //pythagorean theorem
-    public double distance(){
-
+    public double Distance(){
+        double aSquaredBSquared = (double) (Math.pow(ChangeOfY(),2) + Math.pow(ChangeOfX(),2));
+        double distance = Math.sqrt(aSquaredBSquared);
+        return distance;
     }
 
     // y = mx + b form
-    public String slopeEquation(){
-
+    public String SlopeEquation(){
+        String slopeEquation = "y = " + Slope() + "x + " + YIntercept();
+        return slopeEquation;
     }
 
-    public LinearEquation(){
-
+    public String LinearEquation(){
+        String linearEq = "First pair: " + horizontal1 + "," + vertical1 +
+                                "\n Second pair: " + horizontal2 + "," + vertical2 +
+                                "\n Slope of line: " + Slope() +
+                                "\n Y-intercept: " + YIntercept() +
+                                "\n Slope intercept form: " + SlopeEquation() +
+                                "\n Distance between points: " + Distance();
+        return linearEq;
     }
 
     // Create all strings to be printed
-    public String toString(){
-
+    public int FindY(){
+        int yValue = (((ChangeOfY()/ChangeOfX()) * horizontal) + YIntercept());
+        return yValue;
     }
 
-    public int findY(){
-
+    public String toString(){
+        String coordString = ("Solved coordinate point is: (" + horizontal + "," + FindY() + ")");
+        return coordString;
     }
 }
