@@ -1,76 +1,84 @@
 public class LinearEquation {
-    private int horizontal1;
-    private int vertical1;
-    private int horizontal2;
-    private int vertical2;
-    private int horizontal;
+    private double horizontal1;
+    private double vertical1;
+    private double horizontal2;
+    private double vertical2;
+    private double horizontal;
 
-    public void ReceiverOne(int horizontal, int vertical){
+    // TO BE FIXED: integers should be rewritten as doubles   (WIP)
+    //              page 3 requirements should be done
+    //              doublecheck typing standards
+    //              complete testing document
+
+    public void receiverOne(double horizontal, double vertical){
         horizontal1 = horizontal;
         vertical1 = vertical;
     }
 
-    public void ReceiverTwo(int horizontal, int vertical){
+    public void receiverTwo(double horizontal, double vertical){
         horizontal2 = horizontal;
         vertical2 = vertical;
     }
 
-    public void Receiver(int horizontal){
+    public void receiver(double horizontal){
         this.horizontal = horizontal;
     }
 
-    public int ChangeOfX(){
-        int deltaX = horizontal2 - horizontal1;
+    public double changeOfX(){
+        double deltaX = horizontal2 - horizontal1;
         return deltaX;
     }
 
-    public int ChangeOfY(){
-        int deltaY = vertical2 - vertical1;
+    public double changeOfY(){
+        double deltaY = vertical2 - vertical1;
         return deltaY;
     }
 
-    public String Slope(){
-       String m = ChangeOfY() + "/" + ChangeOfX();
-       return m;
-       // set up different slope conditions following the third page instructions!
+    public String slope(){
+        String m = Double.toString(changeOfY()/changeOfX());
+        if ((changeOfY()/changeOfX()) % 1 != 0) {
+            m = changeOfY() + "/" + changeOfX();
+        }
+        return m;
     }
 
-    public int YIntercept(){
-        int b = vertical2 - (horizontal2 * (ChangeOfY()/ChangeOfX()));
+    public double yIntercept(){
+        double b = vertical2 - (horizontal2 * (changeOfY()/changeOfX()));
         return b;
     }
 
     //pythagorean theorem
-    public double Distance(){
-        double aSquaredBSquared = (double) (Math.pow(ChangeOfY(),2) + Math.pow(ChangeOfX(),2));
-        double distance = Math.sqrt(aSquaredBSquared);
-        return distance;
+    public double distance(){
+        double aSquaredBSquared = (double) (Math.pow(changeOfY(),2) + Math.pow(changeOfX(),2));
+        double distance = (Math.sqrt(aSquaredBSquared));
+        double roundedDistance = ((double) Math.round(distance * 100))/100;
+        return roundedDistance;
     }
 
     // y = mx + b form
-    public String SlopeEquation(){
-        String slopeEquation = "y = " + Slope() + "x + " + YIntercept();
+    public String slopeEquation(){
+        String slopeEquation = "y = " + slope() + "x + " + yIntercept();
         return slopeEquation;
     }
 
-    public String LinearEquation(){
-        String linearEq = "First pair: " + horizontal1 + "," + vertical1 +
-                                "\n Second pair: " + horizontal2 + "," + vertical2 +
-                                "\n Slope of line: " + Slope() +
-                                "\n Y-intercept: " + YIntercept() +
-                                "\n Slope intercept form: " + SlopeEquation() +
-                                "\n Distance between points: " + Distance();
+    public String linearEquation(){
+        String linearEq = "First pair: (" + (int)horizontal1 + "," + (int)vertical1 + ")" +
+                                "\nSecond pair: (" + (int)horizontal2 + "," + (int)vertical2 + ")" +
+                                "\nSlope of line: " + slope() +
+                                "\nY-intercept: " + yIntercept() +
+                                "\nSlope intercept form: " + slopeEquation() +
+                                "\nDistance between points: " + distance();
         return linearEq;
     }
 
     // Create all strings to be printed
-    public int FindY(){
-        int yValue = (((ChangeOfY()/ChangeOfX()) * horizontal) + YIntercept());
+    public double findY(){
+        double yValue = (((changeOfY()/changeOfX()) * horizontal) + yIntercept());
         return yValue;
     }
 
     public String toString(){
-        String coordString = ("Solved coordinate point is: (" + horizontal + "," + FindY() + ")");
+        String coordString = ("Solved coordinate point is: (" + horizontal + "," + findY() + ")");
         return coordString;
     }
 }

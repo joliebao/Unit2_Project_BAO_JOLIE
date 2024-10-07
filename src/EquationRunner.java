@@ -7,8 +7,10 @@ public class EquationRunner {
         // First coordinate
         System.out.print("Enter your first Coordinate Point: ");
         String coordinateOne = s.nextLine();
-        String x1 = coordinateOne.substring(1, 2);
-        String y1 = coordinateOne.substring (3, 4);
+        int i = coordinateOne.indexOf(",");
+        int p = coordinateOne.indexOf(")");
+        String x1 = coordinateOne.substring(1, i);
+        String y1 = coordinateOne.substring (i + 1, p);
         int horizontal1 = Integer.parseInt(x1);
         int vertical1 = Integer.parseInt(y1);
 
@@ -16,26 +18,33 @@ public class EquationRunner {
         // Second coordinate
         System.out.print("Enter your second Coordinate Point: ");
         String coordinateTwo = s.nextLine();
-        String x2 = coordinateTwo.substring(1, 2);
-        String y2 = coordinateTwo.substring (3, 4);
+        int i2 = coordinateTwo.indexOf(",");
+        int p2 = coordinateTwo.indexOf(")");
+        String x2 = coordinateTwo.substring(1, i2);
+        String y2 = coordinateTwo.substring (i2 + 1, p2);
         int horizontal2 = Integer.parseInt(x2);
         int vertical2 = Integer.parseInt(y2);
 
         LinearEquation points = new LinearEquation();
 
-        points.ReceiverOne(horizontal1, vertical1);
-        points.ReceiverTwo(horizontal2, vertical2);
-        points.ChangeOfX();
-        points.ChangeOfY();
-        points.Slope();
-        points.YIntercept();
-        points.Distance();
-        points.SlopeEquation();
-        System.out.println(points.LinearEquation());
+        points.receiverOne(horizontal1, vertical1);
+        points.receiverTwo(horizontal2, vertical2);
 
-//        System.out.print("Enter your second Coordinate Point: ");
-        points.FindY();
-        points.toString();
+        points.changeOfX();
+        points.changeOfY();
+        points.slope();
+        points.yIntercept();
+        points.distance();
+        points.slopeEquation();
+        System.out.println(points.linearEquation());
+
+        System.out.print("Enter your second Coordinate Point: ");
+        String coordinateX = s.nextLine();
+        int x = Integer.parseInt(coordinateX);
+        points.receiver(x);
+
+        points.findY();
+        System.out.println(points.toString());
 
     }
 }
