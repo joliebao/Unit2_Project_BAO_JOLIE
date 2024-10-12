@@ -5,11 +5,6 @@ public class LinearEquation {
     private double vertical2;
     private double horizontal;
 
-    // TO BE FIXED: integers should be rewritten as doubles   (WIP)
-    //              page 3 requirements should be done
-    //              doublecheck typing standards
-    //              complete testing document
-
     public void receiverOne(double horizontal, double vertical){
         horizontal1 = horizontal;
         vertical1 = vertical;
@@ -33,19 +28,23 @@ public class LinearEquation {
     }
 
     public String slope(){
-        String m = Double.toString(changeOfY()/changeOfX());
+        String m = Integer.toString((int)changeOfY()/(int)changeOfX());
         if (changeOfY()/changeOfX() % 1 != 0 && changeOfY() < 0 && changeOfX() < 0) {
-            m = Math.abs(changeOfY()) + "/" + Math.abs(changeOfX());
+            m = (int)Math.abs(changeOfY()) + "/" + (int)Math.abs(changeOfX());
+        } else if (changeOfY()/changeOfX() % 1 != 0 && changeOfX() < 0 && changeOfY() < 0) {
+            m = (int)Math.abs(changeOfY()) + "/" + (int)Math.abs(changeOfX());
         } else if (changeOfY()/changeOfX() % 1 != 0 && changeOfX() < 0) {
-            m = -1 * changeOfY() + "/" + -1 * changeOfX();
+            m = -1 * (int)changeOfY() + "/" + -1 * (int)changeOfX();
         } else if ((changeOfY()/changeOfX()) % 1 != 0) {
-            m = changeOfY() + "/" + changeOfX();
+            m = (int)changeOfY() + "/" + (int)changeOfX();
         }
         return m;
     }
 
     public double yIntercept(){
-        return vertical2 - (horizontal2 * (changeOfY()/changeOfX()));
+        double yInt = vertical2 - (horizontal2 * (changeOfY()/changeOfX()));
+        return (double) (Math.round(yInt*100))/100;
+
     }
 
     //pythagorean theorem
@@ -57,15 +56,21 @@ public class LinearEquation {
 
     // y = mx + b form
     public String slopeEquation(){
-        String slopeEquation = "y = " + slope() + "x + " + yIntercept();
-        if ((changeOfY()/changeOfX()) == 1 && yIntercept() == 0) {
-            slopeEquation = "y = " + "x";
-        } else if (yIntercept() < 0){
-            slopeEquation = "y = " + "x - " + yIntercept();
-        } else if ((changeOfY()/changeOfX()) == 1){
-            slopeEquation = "y = " + "x + " + yIntercept();
-        } else if (yIntercept() == 0) {
+        String slopeEquation = " ";
+        if ((changeOfY()/changeOfX()) == 0 && yIntercept() == 0) {          //slope 0, intercept 0
+            slopeEquation = "y = 0";
+        } else if ((changeOfY()/changeOfX()) == 1 && yIntercept() == 0) {   //slope 1, intercept 0
+            slopeEquation = "y = x";
+        } else if ((changeOfY()/changeOfX()) == 1 && yIntercept() < 0){     //slope 1, intercept negative
+            slopeEquation = "y = x - " + Math.abs(yIntercept());
+        } else if ((changeOfY()/changeOfX()) != 1 && yIntercept() < 0){      //slope more than 1, intercept negative
+            slopeEquation = "y = " + slope() + "x - " + (Math.abs(yIntercept()));
+        } else if ((changeOfY()/changeOfX()) > 1 && yIntercept() == 0) {    //slope more than 1, intercept 0
             slopeEquation = "y = " + slope() + "x";
+        } else if ((changeOfY()/changeOfX()) == 1 && yIntercept() > 0){     //slope 1, intercept positive
+            slopeEquation = "y = x + " + yIntercept();
+        } else {
+            slopeEquation = "y = " + slope() + "x + " + yIntercept();
         }
         return slopeEquation;
     }
@@ -81,7 +86,8 @@ public class LinearEquation {
 
     // Create all strings to be printed
     public double findY(){
-        return (((changeOfY()/changeOfX()) * horizontal) + yIntercept());
+        double a = (((changeOfY()/changeOfX()) * horizontal) + yIntercept());
+        return ((int)(a * 100))/100.00;
     }
 
     public String toString(){
